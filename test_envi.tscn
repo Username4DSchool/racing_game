@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://qsm5e6bouf45"]
+
+[ext_resource type="PackedScene" uid="uid://p23gv78dec47" path="res://car.tscn" id="1_4neou"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w70qc"]
+size = Vector3(64, 1, 64)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4neou"]
+albedo_color = Color(0.77084, 0.770839, 0.770839, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4neou"]
+size = Vector3(64, 1, 64)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4neou"]
+
+[sub_resource type="Sky" id="Sky_nfe3m"]
+sky_material = SubResource("ProceduralSkyMaterial_4neou")
+
+[sub_resource type="Environment" id="Environment_qyviu"]
+background_mode = 2
+sky = SubResource("Sky_nfe3m")
+
+[node name="test_envi" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.631867, 0.775077, 0, -0.775077, -0.631867, 0, 15.6477, 0)
+sky_mode = 1
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_w70qc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_4neou")
+mesh = SubResource("BoxMesh_4neou")
+
+[node name="car" parent="." instance=ExtResource("1_4neou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.87, 0.316508, -3)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qyviu")
