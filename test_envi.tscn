@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://qsm5e6bouf45"]
+[gd_scene load_steps=9 format=3 uid="uid://qsm5e6bouf45"]
 
 [ext_resource type="PackedScene" uid="uid://p23gv78dec47" path="res://car.tscn" id="1_4neou"]
+[ext_resource type="Texture2D" uid="uid://d3mwgxafl50up" path="res://icon.svg" id="1_nfe3m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w70qc"]
 size = Vector3(64, 1, 64)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4neou"]
 albedo_color = Color(0.77084, 0.770839, 0.770839, 1)
+albedo_texture = ExtResource("1_nfe3m")
 
 [sub_resource type="BoxMesh" id="BoxMesh_4neou"]
 size = Vector3(64, 1, 64)
@@ -24,6 +26,8 @@ sky = SubResource("Sky_nfe3m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.631867, 0.775077, 0, -0.775077, -0.631867, 0, 15.6477, 0)
+light_color = Color(1, 0.882353, 0.847059, 1)
+light_energy = 0.105
 sky_mode = 1
 
 [node name="floor" type="StaticBody3D" parent="."]

@@ -2,20 +2,29 @@
 
 [ext_resource type="Script" uid="uid://b1lvxqceuo66a" path="res://car.gd" id="1_7822p"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_24jkt"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7822p"]
 size = Vector3(2, 0.5, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7822p"]
+[sub_resource type="BoxMesh" id="BoxMesh_24jkt"]
 size = Vector3(2, 0.5, 1)
 
 [node name="car" type="CharacterBody3D"]
 script = ExtResource("1_7822p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_24jkt")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_7822p")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.00597754, 0.40174, -0.915734, -0.00262234, 0.915754, 0.401731, 0.999979, 2.32836e-10, 0.00652745, -1.85707, 1.0948, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+skeleton = NodePath("body")
+
+[node name="body" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("BoxMesh_24jkt")
+skeleton = NodePath("../..")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1.095, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, -1.08297e-08, -1.42304e-09, 1.08373e-08, 0.967445, 0.253083, -1.36411e-09, -0.253083, 0.967445, 3.21284e-09, -0.165634, 4.0035)
