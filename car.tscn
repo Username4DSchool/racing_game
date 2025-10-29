@@ -9,6 +9,7 @@ size = Vector3(2, 0.5, 1)
 size = Vector3(2, 0.5, 1)
 
 [node name="car" type="CharacterBody3D"]
+floor_stop_on_slope = false
 script = ExtResource("1_7822p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -28,3 +29,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1.0
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, -1.08297e-08, -1.42304e-09, 1.08373e-08, 0.967445, 0.253083, -1.36411e-09, -0.253083, 0.967445, 3.21284e-09, -0.165634, 4.0035)
+
+[node name="front_ray" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="back_ray" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)

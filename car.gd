@@ -36,7 +36,9 @@ func _physics_process(delta: float) -> void:
 			speed = move_toward(speed, 1, 0.004)
 	else:
 		speed = move_toward(speed, 0, 0.02)
-
+	velocity.y -= .1
+	
+	self.move_and_slide()
 	self.move_and_collide(Vector3(speed * 0.2,0,0).rotated(Vector3(0,1,0), self.rotation.y))
 	print(speed)
 	if sliding:
