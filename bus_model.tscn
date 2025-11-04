@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cthybrgghxhkv"]
+
+[ext_resource type="PackedScene" uid="uid://cu1j2g6vb0csx" path="res://assets/Low_Poly_Vehicles_bus.fbx" id="1_6kpk0"]
+[ext_resource type="Texture2D" uid="uid://wntw7gxckojc" path="res://assets/bus01.png" id="2_505j7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkwau"]
+albedo_texture = ExtResource("2_505j7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjgeu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Low_Poly_Vehicles_bus" instance=ExtResource("1_6kpk0")]
+
+[node name="bus" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jkwau")
+
+[node name="wheel" parent="bus" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mjgeu")
+
+[node name="wheel_2" parent="bus" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mjgeu")
+
+[node name="wheel_3" parent="bus" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mjgeu")
+
+[node name="wheel_4" parent="bus" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mjgeu")
+
+[node name="wheel_5" parent="bus" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mjgeu")
+
+[node name="wheel_6" parent="bus" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mjgeu")
