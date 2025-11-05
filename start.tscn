@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cntf6f6dturiq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_goijn"]
+size = Vector3(2, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yp4eo"]
+size = Vector3(2, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1svla"]
+transparency = 1
+albedo_color = Color(2.02149e-06, 0.795811, 0.52185, 0.392157)
+
+[node name="start" type="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_goijn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_yp4eo")
+surface_material_override/0 = SubResource("StandardMaterial3D_1svla")

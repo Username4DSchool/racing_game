@@ -3,23 +3,17 @@ extends Node3D
 var time = 0
 var checkpoints = 0
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-@onready var checkpoint_data = {
- "Position": $finish.position,
- "Rotation": $finish.rotation.y,
- "Speed": 0,
- "Steering": 0,
- "Sliding": false,
- "Slide Steer": 0,
- "Drift Boost": 0,
- "Velocity": Vector2.ZERO,
-}
+var checkpoint_data
+var timer_paused = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
 func _process(delta: float) -> void:
-	time += delta
+	if not timer_paused:
+		time += delta
+	elif $car/car.disable_mode == Node.PROCESS_MODE_DISABLED:
+		time = $timer.time_left
 func check_checkpoints() -> bool:
 	var check = true
 	checkpoints = 0
@@ -30,7 +24,7 @@ func check_checkpoints() -> bool:
 
 func finish():
 	if check_checkpoints():
-		print("finish")
+		timer_paused = true
 
 func save_point():
 	checkpoint_data = {
@@ -57,3 +51,28 @@ func respawn():
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("respawn"):
 		respawn()
+	if Input.is_action_just_pressed("retire"):
+		retire()
+
+func retire():
+	$car/car.process_mode = Node.PROCESS_MODE_DISABLED
+	timer_paused = true
+	time = 0
+	checkpoint_data = {
+ "Position": $start.position + Vector3(0,0.5,0),
+ "Rotation": $start.rotation.y,
+ "Speed": 0,
+ "Steering": 0,
+ "Sliding": false,
+ "Slide Steer": 0,
+ "Drift Boost": 0,
+ "Velocity": Vector3.ZERO,
+	}
+	respawn()
+	$timer.start()
+	await $timer.timeout
+	$car/car.process_mode = Node.PROCESS_MODE_ALWAYS
+	timer_paused = false
+
+func _ready() -> void:
+	retire()

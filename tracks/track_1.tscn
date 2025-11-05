@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://u6gh52pl0ita"]
+[gd_scene load_steps=9 format=3 uid="uid://u6gh52pl0ita"]
 
 [ext_resource type="PackedScene" uid="uid://c1p5dve86skon" path="res://track.tscn" id="1_jhe20"]
 [ext_resource type="PackedScene" uid="uid://p23gv78dec47" path="res://car.tscn" id="2_btncu"]
 [ext_resource type="PackedScene" uid="uid://cxustehqkjlkl" path="res://checkpoint.tscn" id="3_cejyx"]
 [ext_resource type="PackedScene" uid="uid://btkn7skpax3tn" path="res://finish.tscn" id="4_xv2qj"]
 [ext_resource type="PackedScene" uid="uid://cdv1qwnnmkqq5" path="res://hud.tscn" id="5_xv2qj"]
+[ext_resource type="PackedScene" uid="uid://cntf6f6dturiq" path="res://start.tscn" id="6_aq6f0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cejyx"]
 size = Vector3(2, 0.1, 2)
@@ -20,16 +21,16 @@ data = PackedVector3Array(-1, 0.05, 1, 1, 0.05, 1, -1, -0.05, 1, 1, 0.05, 1, 1, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266619, 0)
 
 [node name="checkpoint" parent="checkpoints" index="0" instance=ExtResource("3_cejyx")]
-transform = Transform3D(0.14199, 0, 0.989868, 0, 1, 0, -0.989868, 0, 0.14199, 12.2153, 1.90735e-06, 5.45806)
+transform = Transform3D(0.56796, 0, 3.95947, 0, 4, 0, -3.95947, 0, 0.56796, 12.2153, 1.90735e-06, 5.45806)
 
 [node name="checkpoint2" parent="checkpoints" index="1" instance=ExtResource("3_cejyx")]
-transform = Transform3D(-0.22194, 0, 0.97506, 0, 1, 0, -0.97506, 0, -0.22194, 26.2794, 1.90735e-06, -3.76744)
+transform = Transform3D(-0.88776, 0, 3.90024, 0, 4, 0, -3.90024, 0, -0.88776, 26.2794, 1.90735e-06, -3.76744)
 
 [node name="checkpoint3" parent="checkpoints" index="2" instance=ExtResource("3_cejyx")]
-transform = Transform3D(0.882152, 0, 0.470966, 0, 1, 0, -0.470966, 0, 0.882152, 34.7951, 1.90735e-06, 17.1093)
+transform = Transform3D(3.52861, 0, 1.88386, 0, 4, 0, -1.88386, 0, 3.52861, 34.7951, 1.90735e-06, 17.1093)
 
 [node name="checkpoint4" parent="checkpoints" index="3" instance=ExtResource("3_cejyx")]
-transform = Transform3D(0.882152, 0, 0.470966, 0, 1, 0, -0.470966, 0, 0.882152, 44.3931, 1.90735e-06, 39.0007)
+transform = Transform3D(3.52861, 0, 1.88386, 0, 4, 0, -1.88386, 0, 3.52861, 44.3931, 1.90735e-06, 39.0007)
 
 [node name="floor" type="StaticBody3D" parent="track_objects" index="0"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -87,6 +88,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("ConcavePolygonShape3D_xv2qj")
 
 [node name="finish" parent="." index="5" instance=ExtResource("4_xv2qj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0077, -4.76837e-07, 46.8047)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34.0077, -4.76837e-07, 46.8047)
 
 [node name="hud" parent="." index="6" instance=ExtResource("5_xv2qj")]
+
+[node name="start" parent="." index="7" instance=ExtResource("6_aq6f0")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.09114, -1.66893e-06, 6.00309)
+
+[node name="timer" type="Timer" parent="." index="8"]
+wait_time = 3.0
+one_shot = true
