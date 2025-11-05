@@ -16,3 +16,4 @@ func _on_body_entered(body: Node3D) -> void:
 		checked = true
 		print("checked")
 		self.get_parent().get_parent().check_checkpoints()
+		self.get_parent().get_parent().save_point()

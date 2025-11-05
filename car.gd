@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
-var speed = 0
-var steering = 0
-var sliding = false
-var slide_steer = 0
-var drift_multiplier= 0
+@export var speed = 0
+@export var steering = 0
+@export var sliding = false
+@export var slide_steer = 0
+@export var drift_multiplier= 0
 func _physics_process(delta: float) -> void:
 	if Input.get_axis("ui_left", "ui_right") and speed > 0:
 		if speed < 0.2:

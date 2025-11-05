@@ -6,6 +6,16 @@ var checkpoints = 0
 func _ready() -> void:
 	pass # Replace with function body.
 
+@onready var checkpoint_data = {
+ "Position": $finish.position,
+ "Rotation": $finish.rotation.y,
+ "Speed": 0,
+ "Steering": 0,
+ "Sliding": false,
+ "Slide Steer": 0,
+ "Drift Boost": 0,
+ "Velocity": Vector2.ZERO,
+}
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,3 +31,29 @@ func check_checkpoints() -> bool:
 func finish():
 	if check_checkpoints():
 		print("finish")
+
+func save_point():
+	checkpoint_data = {
+	 "Position": $car/car.position,
+	 "Rotation": $car/car.rotation.y,
+	 "Speed": $car/car.speed,
+	 "Steering": $car/car.steering,
+	 "Sliding": $car/car.sliding,
+	 "Slide Steer": $car/car.slide_steer,
+	 "Drift Boost": $car/car.drift_multiplier,
+	 "Velocity": $car/car.velocity
+	}
+
+func respawn():
+	$car/car.position = checkpoint_data["Position"]
+	$car/car.rotation = checkpoint_data["Rotation"]
+	$car/car.speed = checkpoint_data["Speed"]
+	$car/car.steering= checkpoint_data["Steering"]
+	$car/car.sliding= checkpoint_data["Sliding"]
+	$car/car.slide_steer= checkpoint_data["Slide Steer"]
+	$car/car.drift_multiplier= checkpoint_data["Drift Boost"]
+	$car/car.velocity= checkpoint_data["Velocity"]
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("respawn"):
+		respawn()
