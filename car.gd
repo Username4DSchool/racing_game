@@ -8,9 +8,9 @@ extends CharacterBody3D
 func _physics_process(delta: float) -> void:
 	if Input.get_axis("ui_left", "ui_right") and speed > 0:
 		if speed < 0.2:
-			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.1 * speed)
+			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.3 * speed)
 		else:
-			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.1)
+			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.2)
 	else:
 		steering = move_toward(steering, 0, 0.1)
 		

@@ -46,7 +46,7 @@ func save_point():
 
 func respawn():
 	$car/car.position = checkpoint_data["Position"]
-	$car/car.rotation = checkpoint_data["Rotation"]
+	$car/car.rotation.y = checkpoint_data["Rotation"]
 	$car/car.speed = checkpoint_data["Speed"]
 	$car/car.steering= checkpoint_data["Steering"]
 	$car/car.sliding= checkpoint_data["Sliding"]
