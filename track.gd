@@ -70,7 +70,20 @@ func retire():
 	}
 	respawn()
 	$timer.start()
-	await $timer.timeout
+	check_checkpoints()
+	var checked = 3
+	while $timer.time_left != 0:
+		if $timer.time_left < 3 and checked == 3:
+			checked = 2
+			$hud.shown(3)
+		if $timer.time_left < 2 and checked == 2:
+			checked = 1
+			$hud.shown(2)
+		if $timer.time_left < 1 and checked == 1:
+			checked = 0
+			$hud.shown(1)
+		await get_tree().process_frame
+	$hud.shown(0)
 	$car/car.process_mode = Node.PROCESS_MODE_ALWAYS
 	timer_paused = false
 

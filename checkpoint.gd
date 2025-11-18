@@ -17,3 +17,7 @@ func _on_body_entered(body: Node3D) -> void:
 		print("checked")
 		self.get_parent().get_parent().check_checkpoints()
 		self.get_parent().get_parent().save_point()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("retire"):
+		checked = false

@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1p5dve86skon"]
+[gd_scene load_steps=7 format=3 uid="uid://c1p5dve86skon"]
 
 [ext_resource type="Script" uid="uid://dnfc3nsmogmpk" path="res://track.gd" id="1_mll3j"]
+[ext_resource type="PackedScene" uid="uid://cdv1qwnnmkqq5" path="res://hud.tscn" id="2_phvr8"]
+[ext_resource type="PackedScene" uid="uid://p23gv78dec47" path="res://car.tscn" id="3_bcvet"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dlrp4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -28,3 +30,14 @@ shadow_enabled = true
 [node name="checkpoints" type="Node3D" parent="."]
 
 [node name="track_objects" type="Node3D" parent="."]
+
+[node name="hud" parent="." instance=ExtResource("2_phvr8")]
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="car" type="Node3D" parent="."]
+
+[node name="car" parent="car" instance=ExtResource("3_bcvet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266619, 0)
