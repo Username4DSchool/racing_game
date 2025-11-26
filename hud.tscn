@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdv1qwnnmkqq5"]
+[gd_scene load_steps=9 format=3 uid="uid://cdv1qwnnmkqq5"]
 
 [ext_resource type="Script" uid="uid://bsgsa1rnh12dm" path="res://hud.gd" id="1_37p78"]
+[ext_resource type="PackedScene" uid="uid://c3um71royd1wo" path="res://end.tscn" id="2_64ctp"]
 
 [sub_resource type="FontFile" id="FontFile_64ctp"]
 subpixel_positioning = 0
@@ -229,3 +230,6 @@ text = "1"
 label_settings = SubResource("LabelSettings_a2258")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="end" parent="." instance=ExtResource("2_64ctp")]
+visible = false

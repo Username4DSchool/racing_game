@@ -2,16 +2,17 @@ extends Node3D
 
 var time = 0
 var checkpoints = 0
-# Called when the node enters the scene tree for the first time.
+
 var checkpoint_data
 var timer_paused = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
+@export var bronze_time = 0.0
+@export var silver_time = 0.0
+@export var gold_time = 0.0
 
 func _process(delta: float) -> void:
 	if not timer_paused:
-		time += delta
+		time = 100000 - $Timer.time_left
 	elif $car/car.disable_mode == Node.PROCESS_MODE_DISABLED:
 		time = $timer.time_left
 func check_checkpoints() -> bool:
@@ -21,11 +22,12 @@ func check_checkpoints() -> bool:
 		check = false if not i.checked else check
 		checkpoints = checkpoints + 1 if i.checked else checkpoints
 	return check
-
 func finish():
 	if check_checkpoints():
 		timer_paused = true
-
+		$Timer.stop()
+		$car/car.not_finished = false
+		$hud.fin()
 func save_point():
 	checkpoint_data = {
 	 "Position": $car/car.position,
@@ -39,14 +41,18 @@ func save_point():
 	}
 
 func respawn():
-	$car/car.position = checkpoint_data["Position"]
-	$car/car.rotation.y = checkpoint_data["Rotation"]
-	$car/car.speed = checkpoint_data["Speed"]
-	$car/car.steering= checkpoint_data["Steering"]
-	$car/car.sliding= checkpoint_data["Sliding"]
-	$car/car.slide_steer= checkpoint_data["Slide Steer"]
-	$car/car.drift_multiplier= checkpoint_data["Drift Boost"]
-	$car/car.velocity= checkpoint_data["Velocity"]
+	if $car/car.not_finished:
+		$car/car.position = checkpoint_data["Position"]
+		$car/car.rotation.y = checkpoint_data["Rotation"]
+		$car/car.speed = checkpoint_data["Speed"]
+		$car/car.steering= checkpoint_data["Steering"]
+		$car/car.sliding= checkpoint_data["Sliding"]
+		$car/car.slide_steer= checkpoint_data["Slide Steer"]
+		$car/car.drift_multiplier= checkpoint_data["Drift Boost"]
+		$car/car.velocity= checkpoint_data["Velocity"]
+	else:
+		print('retired')
+		retire()
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("respawn"):
@@ -55,7 +61,11 @@ func _input(event: InputEvent) -> void:
 		retire()
 
 func retire():
+	check_checkpoints()
+	for i in $checkpoints.get_children():
+		i.checked = false
 	$car/car.process_mode = Node.PROCESS_MODE_DISABLED
+	$car/car.not_finished = true
 	timer_paused = true
 	time = 0
 	checkpoint_data = {
@@ -70,7 +80,7 @@ func retire():
 	}
 	respawn()
 	$timer.start()
-	check_checkpoints()
+	
 	var checked = 3
 	while $timer.time_left != 0:
 		if $timer.time_left < 3 and checked == 3:
@@ -84,7 +94,9 @@ func retire():
 			$hud.shown(1)
 		await get_tree().process_frame
 	$hud.shown(0)
+	$Timer.start()
 	$car/car.process_mode = Node.PROCESS_MODE_ALWAYS
+	$car/car.not_finished = true
 	timer_paused = false
 
 func _ready() -> void:

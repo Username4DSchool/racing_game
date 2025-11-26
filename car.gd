@@ -5,9 +5,10 @@ extends CharacterBody3D
 @export var sliding = false
 @export var slide_steer = 0
 @export var drift_multiplier= 0
+@export var not_finished = true
 
 func _physics_process(delta: float) -> void:
-	if Input.get_axis("ui_left", "ui_right") and speed > 0:
+	if Input.get_axis("ui_left", "ui_right") and speed > 0 and not_finished:
 		if speed < 0.2:
 			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.3 * speed)
 		else:
@@ -15,13 +16,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		steering = move_toward(steering, 0, 0.1)
 		
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") and not_finished:
 		if Input.is_action_pressed("ui_up"):
 			speed = move_toward(speed, 0.3 ,0.018)
 		else:
 			speed = move_toward(speed, -0.5 ,0.03)
 	
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_down") and not_finished:
 		
 		if abs(steering) != 0:
 			
@@ -30,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	
 	self.rotate_y(steering * -0.02)
 	
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") and not_finished:
 		if speed <= 1:
 			speed = move_toward(speed, 1, 0.02)
 		else:

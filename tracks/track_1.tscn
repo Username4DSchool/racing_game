@@ -12,6 +12,9 @@ size = Vector3(2, 0.1, 2)
 data = PackedVector3Array(-1, 0.05, 1, 1, 0.05, 1, -1, -0.05, 1, 1, 0.05, 1, 1, -0.05, 1, -1, -0.05, 1, 1, 0.05, -1, -1, 0.05, -1, 1, -0.05, -1, -1, 0.05, -1, -1, -0.05, -1, 1, -0.05, -1, 1, 0.05, 1, 1, 0.05, -1, 1, -0.05, 1, 1, 0.05, -1, 1, -0.05, -1, 1, -0.05, 1, -1, 0.05, -1, -1, 0.05, 1, -1, -0.05, -1, -1, 0.05, 1, -1, -0.05, 1, -1, -0.05, -1, 1, 0.05, 1, -1, 0.05, 1, 1, 0.05, -1, -1, 0.05, 1, -1, 0.05, -1, 1, 0.05, -1, -1, -0.05, 1, 1, -0.05, 1, -1, -0.05, -1, 1, -0.05, 1, 1, -0.05, -1, -1, -0.05, -1)
 
 [node name="track" instance=ExtResource("1_jhe20")]
+bronze_time = 10.0
+silver_time = 8.5
+gold_time = 7.5
 
 [node name="checkpoint" parent="checkpoints" index="0" instance=ExtResource("3_cejyx")]
 transform = Transform3D(0.56796, 0, 3.95947, 0, 4, 0, -3.95947, 0, 0.56796, 12.2153, 1.90735e-06, 5.45806)
@@ -85,3 +88,6 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34.0077, -4.76837e-07, 46.804
 
 [node name="start" parent="." index="5" instance=ExtResource("6_aq6f0")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.09114, -1.66893e-06, 6.00309)
+
+[node name="Timer" type="Timer" parent="." index="9"]
+wait_time = 100000.0

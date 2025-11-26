@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cp57qnq27t8ug"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3rns"]
+bg_color = Color(1, 1, 1, 0.172549)
+border_color = Color(0.8, 0.8, 0.8, 0.27451)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(1, 1, 1, 0.054902)
+shadow_offset = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ll2w"]
+bg_color = Color(1, 1, 1, 0.227451)
+border_color = Color(0.8, 0.8, 0.8, 0.27451)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(1, 1, 1, 0.054902)
+shadow_offset = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp0gv"]
+bg_color = Color(1, 1, 1, 0.294118)
+border_color = Color(0.8, 0.8, 0.8, 0.27451)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(1, 1, 1, 0.054902)
+shadow_offset = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80ky7"]
+bg_color = Color(1, 1, 1, 0.411765)
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.8, 0.8, 0.8, 0.27451)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+shadow_color = Color(1, 1, 1, 0.054902)
+shadow_offset = Vector2(16, 16)
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxFlat_h3rns")
+Button/styles/focus = SubResource("StyleBoxFlat_h3rns")
+Button/styles/hover = SubResource("StyleBoxFlat_5ll2w")
+Button/styles/normal = SubResource("StyleBoxFlat_h3rns")
+Button/styles/pressed = SubResource("StyleBoxFlat_dp0gv")
+Panel/styles/panel = SubResource("StyleBoxFlat_80ky7")
