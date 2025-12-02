@@ -95,7 +95,7 @@ func retire():
 		await get_tree().process_frame
 	$hud.shown(0)
 	$Timer.start()
-	$car/car.process_mode = Node.PROCESS_MODE_ALWAYS
+	$car/car.process_mode = Node.PROCESS_MODE_INHERIT
 	$car/car.not_finished = true
 	timer_paused = false
 

@@ -41,3 +41,6 @@ one_shot = true
 
 [node name="car" parent="car" instance=ExtResource("3_bcvet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266619, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 100000.0

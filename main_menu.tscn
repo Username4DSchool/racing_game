@@ -36,9 +36,11 @@ theme_override_constants/separation = 128
 
 [node name="track_panel" parent="hbox" instance=ExtResource("1_06t4h")]
 layout_mode = 2
+track_name = "Antonstreet"
 
 [node name="track_panel2" parent="hbox" instance=ExtResource("1_06t4h")]
 layout_mode = 2
+track_name = "Wicked winds"
 
 [node name="track_panel3" parent="hbox" instance=ExtResource("1_06t4h")]
 layout_mode = 2

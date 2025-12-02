@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://u6gh52pl0ita"]
 
-[ext_resource type="PackedScene" uid="uid://c1p5dve86skon" path="res://track.tscn" id="1_jhe20"]
-[ext_resource type="PackedScene" uid="uid://cxustehqkjlkl" path="res://checkpoint.tscn" id="3_cejyx"]
-[ext_resource type="PackedScene" uid="uid://btkn7skpax3tn" path="res://finish.tscn" id="4_xv2qj"]
-[ext_resource type="PackedScene" uid="uid://cntf6f6dturiq" path="res://start.tscn" id="6_aq6f0"]
+[ext_resource type="PackedScene" uid="uid://c1p5dve86skon" path="res://track.tscn" id="1_1o41y"]
+[ext_resource type="PackedScene" uid="uid://cxustehqkjlkl" path="res://checkpoint.tscn" id="2_27xk3"]
+[ext_resource type="PackedScene" uid="uid://btkn7skpax3tn" path="res://finish.tscn" id="3_krr08"]
+[ext_resource type="PackedScene" uid="uid://cntf6f6dturiq" path="res://start.tscn" id="4_etoep"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cejyx"]
 size = Vector3(2, 0.1, 2)
@@ -11,21 +11,21 @@ size = Vector3(2, 0.1, 2)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xv2qj"]
 data = PackedVector3Array(-1, 0.05, 1, 1, 0.05, 1, -1, -0.05, 1, 1, 0.05, 1, 1, -0.05, 1, -1, -0.05, 1, 1, 0.05, -1, -1, 0.05, -1, 1, -0.05, -1, -1, 0.05, -1, -1, -0.05, -1, 1, -0.05, -1, 1, 0.05, 1, 1, 0.05, -1, 1, -0.05, 1, 1, 0.05, -1, 1, -0.05, -1, 1, -0.05, 1, -1, 0.05, -1, -1, 0.05, 1, -1, -0.05, -1, -1, 0.05, 1, -1, -0.05, 1, -1, -0.05, -1, 1, 0.05, 1, -1, 0.05, 1, 1, 0.05, -1, -1, 0.05, 1, -1, 0.05, -1, 1, 0.05, -1, -1, -0.05, 1, 1, -0.05, 1, -1, -0.05, -1, 1, -0.05, 1, 1, -0.05, -1, -1, -0.05, -1)
 
-[node name="track" instance=ExtResource("1_jhe20")]
+[node name="track" instance=ExtResource("1_1o41y")]
 bronze_time = 10.0
 silver_time = 8.5
 gold_time = 7.5
 
-[node name="checkpoint" parent="checkpoints" index="0" instance=ExtResource("3_cejyx")]
+[node name="checkpoint" parent="checkpoints" index="0" instance=ExtResource("2_27xk3")]
 transform = Transform3D(0.56796, 0, 3.95947, 0, 4, 0, -3.95947, 0, 0.56796, 12.2153, 1.90735e-06, 5.45806)
 
-[node name="checkpoint2" parent="checkpoints" index="1" instance=ExtResource("3_cejyx")]
+[node name="checkpoint2" parent="checkpoints" index="1" instance=ExtResource("2_27xk3")]
 transform = Transform3D(-0.88776, 0, 3.90024, 0, 4, 0, -3.90024, 0, -0.88776, 26.2794, 1.90735e-06, -3.76744)
 
-[node name="checkpoint3" parent="checkpoints" index="2" instance=ExtResource("3_cejyx")]
+[node name="checkpoint3" parent="checkpoints" index="2" instance=ExtResource("2_27xk3")]
 transform = Transform3D(3.52861, 0, 1.88386, 0, 4, 0, -1.88386, 0, 3.52861, 34.7951, 1.90735e-06, 17.1093)
 
-[node name="checkpoint4" parent="checkpoints" index="3" instance=ExtResource("3_cejyx")]
+[node name="checkpoint4" parent="checkpoints" index="3" instance=ExtResource("2_27xk3")]
 transform = Transform3D(3.52861, 0, 1.88386, 0, 4, 0, -1.88386, 0, 3.52861, 44.3931, 1.90735e-06, 39.0007)
 
 [node name="floor" type="StaticBody3D" parent="track_objects" index="0"]
@@ -83,11 +83,8 @@ mesh = SubResource("BoxMesh_cejyx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("ConcavePolygonShape3D_xv2qj")
 
-[node name="finish" parent="." index="4" instance=ExtResource("4_xv2qj")]
+[node name="finish" parent="." index="4" instance=ExtResource("3_krr08")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34.0077, -4.76837e-07, 46.8047)
 
-[node name="start" parent="." index="5" instance=ExtResource("6_aq6f0")]
+[node name="start" parent="." index="5" instance=ExtResource("4_etoep")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.09114, -1.66893e-06, 6.00309)
-
-[node name="Timer" type="Timer" parent="." index="9"]
-wait_time = 100000.0

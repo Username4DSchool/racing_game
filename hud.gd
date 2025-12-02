@@ -1,5 +1,7 @@
 extends Node2D
 
+var paused = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$time.text = var_to_str(floori(self.get_parent().time / 60))  + ":" + var_to_str(floori(self.get_parent().time) % 60) + "." + var_to_str(self.get_parent().time - floor(self.get_parent().time)).substr(2,2)
@@ -34,3 +36,19 @@ func fin():
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("respawn") or Input.is_action_just_pressed("retire"):
 		$end.visible = false
+	if Input.is_action_just_pressed("pause") and $end.visible == false:
+		
+		paused = not paused
+		$pause_menu.visible = paused
+		if paused:
+			self.get_parent().get_parent().process_mode = Node.PROCESS_MODE_DISABLED
+		else:
+			self.get_parent().get_parent().process_mode = Node.PROCESS_MODE_ALWAYS
+
+func close_pause():
+	paused = not paused
+	$pause_menu.visible = paused
+	if paused:
+		self.get_parent().get_parent().process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		self.get_parent().get_parent().process_mode = Node.PROCESS_MODE_ALWAYS
