@@ -114,3 +114,4 @@ label_settings = SubResource("LabelSettings_lt2ag")
 vertical_alignment = 1
 
 [connection signal="pressed" from="Panel/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/exit" to="." method="_on_exit_pressed"]

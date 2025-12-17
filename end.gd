@@ -1,5 +1,6 @@
 extends Node2D
 
+var main_menu = preload("res://main_menu.tscn")
 
 @export var time = 0
 @export var old = 0
@@ -35,3 +36,9 @@ func update():
 func _on_retry_pressed() -> void:
 	self.get_parent().get_parent().retire()
 	self.visible = false
+
+
+
+func _on_exit_pressed() -> void:
+	self.get_parent().get_parent().get_parent().add_child(main_menu.instantiate())
+	self.get_parent().get_parent().queue_free()

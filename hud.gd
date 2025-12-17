@@ -21,7 +21,7 @@ func shown(shown: int) -> void:
 func fin():
 	$end.visible = true
 	$end.time = self.get_parent().time
-	$end.old = SaveManager.pb if SaveManager.pb != -1 else self.get_parent().time
+	$end.old = SaveManager.pb[self.get_parent().name] if SaveManager.pb[self.get_parent().name] != -1 else self.get_parent().time
 	if self.get_parent().gold_time > self.get_parent().time:
 		$end.medal = 3
 	elif self.get_parent().silver_time > self.get_parent().time:
@@ -31,8 +31,9 @@ func fin():
 	else:
 		$end.medal = 0
 	$end.update()
-	if SaveManager.pb > self.get_parent().time or SaveManager.pb == -1:
-		SaveManager.pb = self.get_parent().time
+	SaveManager.save_state()
+	if SaveManager.pb[self.get_parent().name] > self.get_parent().time or SaveManager.pb[self.get_parent().name] == -1:
+		SaveManager.pb[self.get_parent().name] = self.get_parent().time
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("respawn") or Input.is_action_just_pressed("retire"):
 		$end.visible = false

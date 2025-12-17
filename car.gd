@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			sliding = true
 			slide_steer = steering / abs(steering)
 	
-	self.rotate_y(steering * -0.02)
+	self.rotate_y(steering * -0.016)
 	
 	if Input.is_action_pressed("ui_up") and not_finished:
 		if speed <= 1:
@@ -38,14 +38,15 @@ func _physics_process(delta: float) -> void:
 			speed = move_toward(speed, 1, 0.004)
 	else:
 		speed = move_toward(speed, 0, 0.04)
-	velocity.y -= .1
+	velocity.y -= 8 * delta
 	
 	self.move_and_slide()
-	self.move_and_collide(Vector3(speed * 0.2,0,0).rotated(Vector3(0,1,0), self.rotation.y))
+	self.move_and_collide(Vector3(speed * 30 * delta,0,0).rotated(Vector3(0,1,0), self.rotation.y))
 	
 	if sliding:
 		self.move_and_collide(Vector3(slide_steer * 0.02 * speed, 0 ,0))
-		$Node3D.rotation.y = move_toward($Node3D.rotation.y,deg_to_rad(-90) + 0.3 * slide_steer, 0.004)
+		self.rotate_y(slide_steer * -0.008)
+		$Node3D.rotation.y = move_toward($Node3D.rotation.y,deg_to_rad(-90) + 0.5 * slide_steer, 0.004)
 		$Node3D/Camera3D.fov = move_toward($Node3D/Camera3D.fov, 40, 0.1)
 		drift_multiplier += delta * .40
 		if steering / abs(steering) != slide_steer or not Input.is_action_pressed("ui_down"):

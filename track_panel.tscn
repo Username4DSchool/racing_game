@@ -3,27 +3,38 @@
 [ext_resource type="Theme" uid="uid://cp57qnq27t8ug" path="res://resources/standard_theme.tres" id="1_qg17r"]
 [ext_resource type="Script" uid="uid://bbbgewkc8rj3s" path="res://track_panel.gd" id="2_1dpuu"]
 
-[node name="track_panel" type="Panel"]
-custom_minimum_size = Vector2(128, 0)
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-theme = ExtResource("1_qg17r")
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
 script = ExtResource("2_1dpuu")
+
+[node name="track_panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 160.0
+offset_bottom = 160.0
+theme = ExtResource("1_qg17r")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 32.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 160.0
+offset_bottom = 64.0
 text = "Windy Woods"
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 0
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 160.0
-offset_bottom = 160.0
+offset_right = 192.0
+offset_bottom = 192.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
