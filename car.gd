@@ -8,9 +8,9 @@ extends CharacterBody3D
 @export var not_finished = true
 
 func _physics_process(delta: float) -> void:
-	if Input.get_axis("ui_left", "ui_right") and speed > 0 and not_finished:
+	if Input.get_axis("ui_left", "ui_right") and speed != 0 and not_finished:
 		if speed < 0.2:
-			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.3 * speed)
+			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.3 * abs(speed))
 		else:
 			steering = move_toward(steering, Input.get_axis("ui_left", "ui_right"), 0.2)
 	else:
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ui_down") and not_finished:
 		
-		if abs(steering) != 0:
+		if abs(steering) != 0 and speed > 0.2:
 			
 			sliding = true
 			slide_steer = steering / abs(steering)
@@ -37,7 +37,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			speed = move_toward(speed, 1, 0.004)
 	else:
-		speed = move_toward(speed, 0, 0.04)
+		if speed > 0:
+			speed = move_toward(speed, 0, 0.04)
 	velocity.y -= 8 * delta
 	
 	self.move_and_slide()
